@@ -31,10 +31,6 @@ const Form = () => {
         setPostData({...postData, [e.target.name]: e.target.value});
     }
 
-    const onDoneHandler = base64 => {
-        setPostData({...postData, selectedFile: base64});
-    }
-
     const clear = () => {
         setPostData({
             creator: '',
@@ -92,7 +88,7 @@ const Form = () => {
                     <FileBase 
                         type='file'
                         multiple={false}
-                        onDone={(base64) => onDoneHandler(base64)}
+                        onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })}
                     />
                 </div>
                 <Button
